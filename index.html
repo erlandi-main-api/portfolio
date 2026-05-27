@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M Erlandi — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">&lt;Erlandi /&gt;</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+    <ul class="mobile-menu" id="mobileMenu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="avatar-wrapper">
+        <img src="https://erlandi.eu.org/avatar.php?v=24" alt="M Erlandi" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=M+Erlandi&size=150&background=6c63ff&color=fff&rounded=true'"/>
+        <span class="status-dot"></span>
+      </div>
+      <div class="hero-text">
+        <p class="greeting">Halo, saya</p>
+        <h1>M Erlandi</h1>
+        <div class="typewriter-wrap">
+          <span class="typewriter" id="typewriter"></span><span class="cursor">|</span>
+        </div>
+        <p class="hero-desc">Developer & Creator yang suka membangun hal-hal keren di dunia digital.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">Lihat Projects</a>
+          <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About <span>Me</span></h2>
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <img src="https://erlandi.eu.org/avatar.php?v=24" alt="M Erlandi" class="about-img" onerror="this.src='https://ui-avatars.com/api/?name=M+Erlandi&size=300&background=6c63ff&color=fff'"/>
+          <div class="about-badge">
+            <span class="badge-num">2+</span>
+            <span class="badge-text">Years<br>Experience</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <h3>Developer & Content Creator</h3>
+          <p>Saya adalah seorang Developer dan Creator yang passionate dalam membangun aplikasi web dan menciptakan konten digital. Saya senang belajar teknologi baru dan menerapkannya untuk memecahkan masalah nyata.</p>
+          <p>Selain coding, saya juga suka mendengarkan musik dan berbagi pengetahuan melalui berbagai platform sosial media.</p>
+          <div class="about-info">
+            <div class="info-item"><i class="fas fa-user"></i><span><strong>Nama:</strong> M Erlandi</span></div>
+            <div class="info-item"><i class="fas fa-globe"></i><span><strong>Website:</strong> erlandi.eu.org</span></div>
+            <div class="info-item"><i class="fas fa-map-marker-alt"></i><span><strong>Lokasi:</strong> Indonesia</span></div>
+            <div class="info-item"><i class="fas fa-code"></i><span><strong>Status:</strong> Open for Work</span></div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My <span>Skills</span></h2>
+      <p class="section-sub">Teknologi dan tools yang saya kuasai</p>
+      <div class="skills-grid">
+
+        <div class="skill-category">
+          <h4><i class="fas fa-code"></i> Frontend</h4>
+          <div class="skill-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-server"></i> Backend</h4>
+          <div class="skill-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">PHP</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-database"></i> Database</h4>
+          <div class="skill-tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">SQLite</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-tools"></i> Tools & Others</h4>
+          <div class="skill-tags">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Termux</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Progress bars -->
+      <div class="progress-section">
+        <div class="progress-item">
+          <div class="progress-label"><span>HTML & CSS</span><span>90%</span></div>
+          <div class="progress-bar"><div class="progress-fill" data-width="90"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>JavaScript</span><span>80%</span></div>
+          <div class="progress-bar"><div class="progress-fill" data-width="80"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Node.js / Backend</span><span>75%</span></div>
+          <div class="progress-bar"><div class="progress-fill" data-width="75"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>PHP</span><span>70%</span></div>
+          <div class="progress-bar"><div class="progress-fill" data-width="70"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Python</span><span>65%</span></div>
+          <div class="progress-bar"><div class="progress-fill" data-width="65"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">My <span>Projects</span></h2>
+      <p class="section-sub">Beberapa proyek yang telah saya kerjakan</p>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-music"></i></div>
+          <h4>Music Player</h4>
+          <p>Player musik sederhana dengan sorting otomatis A→Z, dibangun untuk pengalaman santai mendengarkan musik.</p>
+          <div class="project-tech">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://erlandi.eu.org" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+            <a href="https://github.com/erlandi-main-api" target="_blank"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-robot"></i></div>
+          <h4>API Projects</h4>
+          <p>Berbagai project API dan backend yang dihosting dan dapat digunakan untuk kebutuhan development.</p>
+          <div class="project-tech">
+            <span>Node.js</span><span>API</span><span>GitHub</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/erlandi-main-api" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-globe"></i></div>
+          <h4>Personal Website</h4>
+          <p>Website personal yang menampilkan profil, social media, dan berbagai fitur interaktif lainnya.</p>
+          <div class="project-tech">
+            <span>HTML</span><span>CSS</span><span>PHP</span>
+          </div>
+          <div class="project-links">
+            <a href="https://erlandi.eu.org" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+          </div>
+        </div>
+
+        <div class="project-card project-add">
+          <div class="project-icon"><i class="fas fa-plus"></i></div>
+          <h4>More Coming Soon</h4>
+          <p>Masih banyak project menarik yang sedang dalam pengembangan. Stay tuned!</p>
+          <div class="project-links">
+            <a href="https://github.com/erlandi-main-api" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In <span>Touch</span></h2>
+      <p class="section-sub">Hubungi saya melalui platform berikut</p>
+      <div class="social-grid">
+        <a href="https://github.com/erlandi-main-api" target="_blank" class="social-card github">
+          <i class="fab fa-github"></i>
+          <span class="social-name">GitHub</span>
+          <span class="social-handle">@erlandi-main-api</span>
+        </a>
+        <a href="https://t.me/erl_andi" target="_blank" class="social-card telegram">
+          <i class="fab fa-telegram"></i>
+          <span class="social-name">Telegram</span>
+          <span class="social-handle">@erl_andi</span>
+        </a>
+        <a href="https://instagram.com/m_erlandi" target="_blank" class="social-card instagram">
+          <i class="fab fa-instagram"></i>
+          <span class="social-name">Instagram</span>
+          <span class="social-handle">@m_erlandi</span>
+        </a>
+        <a href="https://x.com/iam_erlandi" target="_blank" class="social-card twitter">
+          <i class="fab fa-x-twitter"></i>
+          <span class="social-name">X / Twitter</span>
+          <span class="social-handle">@iam_erlandi</span>
+        </a>
+        <a href="https://facebook.com/mr.erlandi" target="_blank" class="social-card facebook">
+          <i class="fab fa-facebook"></i>
+          <span class="social-name">Facebook</span>
+          <span class="social-handle">mr.erlandi</span>
+        </a>
+        <a href="https://erlandi.eu.org" target="_blank" class="social-card website">
+          <i class="fas fa-globe"></i>
+          <span class="social-name">Website</span>
+          <span class="social-handle">erlandi.eu.org</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 <strong>M Erlandi</strong> — Built with <i class="fas fa-heart"></i> using HTML, CSS & JS</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
