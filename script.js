@@ -53,7 +53,7 @@ const cardObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project-card, .skill-category, .social-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s';
   cardObserver.observe(el);
 });
 
