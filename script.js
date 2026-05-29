@@ -163,7 +163,7 @@ window.addEventListener('scroll', () => {
 
 /* ===== TYPEWRITER ===== */
 try {
-  const roles = ['Developer', 'Security Researcher', 'Bug Bounty Hunter', 'Pentester', 'Creator'];
+  const roles = ['Developer', 'Security Researcher', 'Bug Bounty Hunter', 'AI Agent Builder', 'Pentester', 'Android Hacker', 'Creator'];
   let ri = 0, ci = 0, del = false;
   const tw = $('typewriter');
   if (tw) {
