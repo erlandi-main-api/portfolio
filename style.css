@@ -255,6 +255,51 @@ section { padding: 5rem 0; }
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   transition: width 1.2s ease;
 }
+.progress-fill-sec {
+  background: linear-gradient(90deg, var(--secondary), #ff9a3c);
+}
+
+/* ===== SKILL TABS ===== */
+.skill-tabs {
+  display: flex; gap: 0.8rem; justify-content: center;
+  margin-bottom: 2.5rem; flex-wrap: wrap;
+}
+.skill-tab {
+  background: var(--card); border: 1px solid var(--border);
+  color: var(--text-muted); padding: 0.5rem 1.4rem;
+  border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.skill-tab:hover { border-color: var(--primary); color: var(--primary); }
+.skill-tab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+/* Security skill cards */
+.skill-security { border-color: rgba(246,79,89,0.3); }
+.skill-security h4 { color: var(--secondary); }
+.skill-security:hover {
+  box-shadow: 0 12px 35px rgba(246,79,89,0.2);
+  border-color: var(--secondary);
+}
+.tag-sec {
+  background: rgba(246,79,89,0.12); color: #ff6b7a;
+  border-color: rgba(246,79,89,0.3);
+}
+.tag-sec:hover { background: var(--secondary); color: #fff; }
+
+/* Hidden skill categories */
+.skill-category.hidden { display: none; }
+
+/* Two-column progress */
+.progress-cols {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+}
+.progress-group-label {
+  font-size: 0.85rem; font-weight: 700; color: var(--primary);
+  margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.progress-group-label.sec-label { color: var(--secondary); }
 
 /* ===== PROJECTS ===== */
 #projects { background: var(--bg2); }
@@ -355,4 +400,5 @@ footer strong { color: var(--text); }
   .about-badge { right: 0; bottom: -0.5rem; }
   .about-text { display: flex; flex-direction: column; align-items: center; }
   .about-text p { text-align: left; }
+  .progress-cols { grid-template-columns: 1fr; gap: 2rem; }
 }
