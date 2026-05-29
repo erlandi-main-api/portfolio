@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-
 /* ===== UTILS ===== */
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const $ = id => document.getElementById(id);
@@ -272,4 +270,4 @@ try {
   $$('.reveal').forEach(el => revObs.observe(el));
 } catch (e) {}
 
-}); // end DOMContentLoaded
+// end script
