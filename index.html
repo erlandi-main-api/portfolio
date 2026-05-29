@@ -6,25 +6,46 @@
   <title>M Erlandi — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-  <!-- Matrix Rain Canvas -->
+  <!-- Boot Loader -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">&gt; ERLANDI_SYS</div>
+      <div class="loader-lines" id="loaderLines"></div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+        <span class="loader-pct" id="loaderPct">0%</span>
+      </div>
+      <div class="loader-status" id="loaderStatus">INITIALIZING...</div>
+    </div>
+  </div>
+
+  <!-- Cursor glow -->
+  <div id="cursorGlow"></div>
+
+  <!-- Scroll progress -->
+  <div id="scrollProgress"></div>
+
+  <!-- Matrix Canvas -->
   <canvas id="matrixCanvas"></canvas>
 
-  <!-- Scanline overlay -->
+  <!-- Scanline -->
   <div class="scanline"></div>
 
   <!-- Navbar -->
   <nav id="navbar">
     <div class="nav-container">
-      <a href="#" class="logo"><span class="prompt">&gt;</span> erlandi<span class="blink-cursor">_</span></a>
+      <a href="#" class="logo">
+        <span class="logo-bracket">[</span>ERLANDI<span class="logo-bracket">]</span>
+      </a>
       <ul class="nav-links">
-        <li><a href="#about"><span class="nav-prefix">//</span> about</a></li>
-        <li><a href="#skills"><span class="nav-prefix">//</span> skills</a></li>
-        <li><a href="#projects"><span class="nav-prefix">//</span> projects</a></li>
-        <li><a href="#contact"><span class="nav-prefix">//</span> contact</a></li>
+        <li><a href="#about" class="nav-link" data-text="about">about</a></li>
+        <li><a href="#skills" class="nav-link" data-text="skills">skills</a></li>
+        <li><a href="#projects" class="nav-link" data-text="projects">projects</a></li>
+        <li><a href="#contact" class="nav-link" data-text="contact">contact</a></li>
       </ul>
       <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
     </div>
@@ -38,63 +59,110 @@
 
   <!-- Hero -->
   <section id="hero">
-    <div class="hero-content">
-      <div class="terminal-badge">[ SYSTEM ONLINE ]</div>
-      <div class="avatar-wrapper">
-        <div class="avatar-ring"></div>
-        <img src="https://erlandi.eu.org/avatar.php?v=24" alt="M Erlandi" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=M+Erlandi&size=150&background=00ff41&color=000&rounded=true'"/>
-        <span class="status-dot"></span>
-      </div>
-      <div class="hero-text">
-        <p class="greeting"><span class="prompt">&gt;</span> identify --user</p>
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-container">
+      <div class="hero-left">
+        <div class="hero-tag" id="heroTag">[ SYSTEM ONLINE ]</div>
+        <p class="hero-greeting">&gt; identify --user</p>
         <h1 class="glitch" data-text="M Erlandi">M Erlandi</h1>
-        <div class="typewriter-wrap">
-          <span class="prompt">&gt;</span> <span class="typewriter" id="typewriter"></span><span class="cursor">█</span>
+        <div class="typewriter-line">
+          <span class="tw-prompt">&gt;&nbsp;</span>
+          <span id="typewriter"></span><span class="tw-cursor">█</span>
         </div>
-        <p class="hero-desc"><span class="comment">// </span>Membangun sistem, menerobos batas, meninggalkan jejak di dunia digital.</p>
+        <p class="hero-desc">Developer, Security Researcher, dan Bug Bounty Hunter yang beroperasi secara internasional. Membangun sistem, mengeksploitasi celah, meninggalkan jejak di dunia digital.</p>
         <div class="hero-btns">
-          <a href="#projects" class="btn btn-primary"><i class="fas fa-terminal"></i> ./projects</a>
-          <a href="#contact" class="btn btn-outline"><i class="fas fa-satellite-dish"></i> ./connect</a>
+          <a href="#projects" class="btn btn-primary">
+            <span class="btn-icon"><i class="fas fa-terminal"></i></span>
+            <span>./projects</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            <span class="btn-icon"><i class="fas fa-satellite-dish"></i></span>
+            <span>./connect</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num" data-target="2">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Years Active</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="50">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="10">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Bug Bounties</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="avatar-frame">
+          <div class="hex-ring hex-ring-1"></div>
+          <div class="hex-ring hex-ring-2"></div>
+          <div class="hex-ring hex-ring-3"></div>
+          <div class="avatar-glow"></div>
+          <img src="https://erlandi.eu.org/avatar.php?v=24" alt="M Erlandi" class="avatar"
+            onerror="this.src='https://ui-avatars.com/api/?name=M+Erlandi&size=300&background=00ff41&color=000'"/>
+          <span class="status-dot"></span>
+        </div>
+        <div class="hero-code-card">
+          <div class="code-line"><span class="c-key">role</span><span class="c-sep">:</span> <span class="c-str">"Security Researcher"</span></div>
+          <div class="code-line"><span class="c-key">base</span><span class="c-sep">:</span> <span class="c-str">"Indonesia"</span></div>
+          <div class="code-line"><span class="c-key">status</span><span class="c-sep">:</span> <span class="c-val">ONLINE</span></div>
         </div>
       </div>
     </div>
-    <div class="scroll-down"><span class="prompt">&gt;</span> <i class="fas fa-chevron-down"></i></div>
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
   </section>
 
   <!-- About -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">&gt;</span> whoami<span class="title-accent">()</span></h2>
-      <p class="section-sub"><span class="comment">// </span>Executing identity lookup...</p>
+      <div class="section-header">
+        <span class="section-label">01 / ABOUT</span>
+        <h2 class="section-title">whoami<span class="title-cursor">_</span></h2>
+        <div class="section-line"></div>
+      </div>
       <div class="about-grid">
-        <div class="about-img-wrap">
-          <div class="terminal-window">
-            <div class="terminal-header">
-              <span class="t-dot red"></span>
-              <span class="t-dot yellow"></span>
-              <span class="t-dot green"></span>
-              <span class="t-title">profile.sh</span>
+        <div class="about-visual">
+          <div class="terminal-card">
+            <div class="tc-header">
+              <div class="tc-dots">
+                <span class="tcd red"></span>
+                <span class="tcd yellow"></span>
+                <span class="tcd green"></span>
+              </div>
+              <span class="tc-title">~/profile.sh</span>
             </div>
-            <div class="terminal-body">
-              <img src="https://erlandi.eu.org/avatar.php?v=24" alt="M Erlandi" class="about-img" onerror="this.src='https://ui-avatars.com/api/?name=M+Erlandi&size=300&background=00ff41&color=000'"/>
+            <div class="tc-body">
+              <img src="https://erlandi.eu.org/avatar.php?v=24" alt="M Erlandi" class="about-img"
+                onerror="this.src='https://ui-avatars.com/api/?name=M+Erlandi&size=300&background=00ff41&color=000'"/>
             </div>
           </div>
-          <div class="about-badge">
-            <span class="badge-num">2+</span>
-            <span class="badge-text">Years<br>Active</span>
+          <div class="exp-badge">
+            <span class="exp-num" data-target="2">0</span><span class="exp-plus">+</span>
+            <span class="exp-text">Years<br>Active</span>
           </div>
         </div>
-        <div class="about-text">
-          <h3><span class="prompt">&gt;</span> cat profile.txt</h3>
-          <p>Developer, Security Researcher, dan Bug Bounty Hunter yang beroperasi secara internasional. Fokus pada web exploitation, recon mendalam, dan membangun sistem yang robust.</p>
-          <p>Saya tidak sekadar coding — saya berpikir seperti attacker untuk membangun pertahanan yang lebih kuat dan menemukan celah sebelum orang lain menemukannya.</p>
-          <div class="about-info">
-            <div class="info-item"><span class="info-key">name</span><span class="info-sep">:</span><span class="info-val">M Erlandi</span></div>
-            <div class="info-item"><span class="info-key">base</span><span class="info-sep">:</span><span class="info-val">Indonesia</span></div>
-            <div class="info-item"><span class="info-key">web</span><span class="info-sep">:</span><span class="info-val">erlandi.eu.org</span></div>
-            <div class="info-item"><span class="info-key">status</span><span class="info-sep">:</span><span class="info-val status-active">OPEN_FOR_WORK</span></div>
+        <div class="about-content">
+          <div class="about-cmd">&gt; cat profile.txt</div>
+          <h3 class="about-role">Developer <span class="amp">&</span> Security Researcher</h3>
+          <p>Saya adalah seorang Developer dan Security Researcher yang passionate dalam membangun sistem yang robust dan menemukan kerentanan sebelum orang lain. Beroperasi di ranah internasional dengan fokus pada web exploitation dan recon mendalam.</p>
+          <p>Berpikir secara offensive sebelum defensive — karena untuk membangun pertahanan terbaik, kamu harus tahu cara menyerang.</p>
+          <div class="info-grid">
+            <div class="info-row"><span class="ik">name</span><span class="isep">→</span><span class="iv">M Erlandi</span></div>
+            <div class="info-row"><span class="ik">base</span><span class="isep">→</span><span class="iv">Indonesia</span></div>
+            <div class="info-row"><span class="ik">web</span><span class="isep">→</span><span class="iv link">erlandi.eu.org</span></div>
+            <div class="info-row"><span class="ik">status</span><span class="isep">→</span><span class="iv active-status">OPEN_FOR_WORK</span></div>
           </div>
-          <a href="#contact" class="btn btn-primary"><i class="fas fa-file-code"></i> ./download_cv</a>
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-file-code"></i> ./download_cv
+          </a>
         </div>
       </div>
     </div>
@@ -103,156 +171,163 @@
   <!-- Skills -->
   <section id="skills">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">&gt;</span> ls --skills<span class="title-accent">()</span></h2>
-      <p class="section-sub"><span class="comment">// </span>Enumerating capabilities...</p>
+      <div class="section-header">
+        <span class="section-label">02 / SKILLS</span>
+        <h2 class="section-title">capabilities<span class="title-cursor">_</span></h2>
+        <div class="section-line"></div>
+      </div>
 
       <div class="skill-tabs">
-        <button class="skill-tab active" data-filter="all">[ ALL ]</button>
-        <button class="skill-tab" data-filter="development">[ DEV ]</button>
-        <button class="skill-tab" data-filter="security">[ SEC ]</button>
+        <button class="skill-tab active" data-filter="all">ALL</button>
+        <button class="skill-tab" data-filter="development">DEV</button>
+        <button class="skill-tab" data-filter="security">SEC</button>
       </div>
 
       <div class="skills-grid">
-
-        <div class="skill-category" data-cat="development">
-          <h4><i class="fas fa-code"></i> Frontend</h4>
+        <div class="skill-card" data-cat="development">
+          <div class="sc-icon dev"><i class="fas fa-code"></i></div>
+          <h4>Frontend</h4>
           <div class="skill-tags">
-            <span class="tag">HTML5</span>
-            <span class="tag">CSS3</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">React</span>
-            <span class="tag">Tailwind CSS</span>
+            <span class="tag" data-original="HTML5">HTML5</span>
+            <span class="tag" data-original="CSS3">CSS3</span>
+            <span class="tag" data-original="JavaScript">JavaScript</span>
+            <span class="tag" data-original="React">React</span>
+            <span class="tag" data-original="Tailwind CSS">Tailwind CSS</span>
           </div>
         </div>
 
-        <div class="skill-category" data-cat="development">
-          <h4><i class="fas fa-server"></i> Backend</h4>
+        <div class="skill-card" data-cat="development">
+          <div class="sc-icon dev"><i class="fas fa-server"></i></div>
+          <h4>Backend</h4>
           <div class="skill-tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">PHP</span>
-            <span class="tag">Express.js</span>
-            <span class="tag">REST API</span>
-            <span class="tag">Python</span>
+            <span class="tag" data-original="Node.js">Node.js</span>
+            <span class="tag" data-original="PHP">PHP</span>
+            <span class="tag" data-original="Express.js">Express.js</span>
+            <span class="tag" data-original="REST API">REST API</span>
+            <span class="tag" data-original="Python">Python</span>
           </div>
         </div>
 
-        <div class="skill-category" data-cat="development">
-          <h4><i class="fas fa-database"></i> Database</h4>
+        <div class="skill-card" data-cat="development">
+          <div class="sc-icon dev"><i class="fas fa-database"></i></div>
+          <h4>Database</h4>
           <div class="skill-tags">
-            <span class="tag">MySQL</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">Firebase</span>
-            <span class="tag">SQLite</span>
+            <span class="tag" data-original="MySQL">MySQL</span>
+            <span class="tag" data-original="MongoDB">MongoDB</span>
+            <span class="tag" data-original="Firebase">Firebase</span>
+            <span class="tag" data-original="SQLite">SQLite</span>
           </div>
         </div>
 
-        <div class="skill-category" data-cat="development">
-          <h4><i class="fas fa-tools"></i> DevOps & Tools</h4>
+        <div class="skill-card" data-cat="development">
+          <div class="sc-icon dev"><i class="fas fa-tools"></i></div>
+          <h4>DevOps &amp; Tools</h4>
           <div class="skill-tags">
-            <span class="tag">Git</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">VS Code</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Termux</span>
-            <span class="tag">Docker</span>
+            <span class="tag" data-original="Git">Git</span>
+            <span class="tag" data-original="GitHub">GitHub</span>
+            <span class="tag" data-original="Docker">Docker</span>
+            <span class="tag" data-original="Linux">Linux</span>
+            <span class="tag" data-original="Termux">Termux</span>
           </div>
         </div>
 
-        <div class="skill-category skill-security" data-cat="security">
-          <h4><i class="fas fa-shield-alt"></i> Penetration Testing</h4>
+        <div class="skill-card sec" data-cat="security">
+          <div class="sc-icon sec-i"><i class="fas fa-shield-alt"></i></div>
+          <h4>Penetration Testing</h4>
           <div class="skill-tags">
-            <span class="tag tag-sec">Web App Pentest</span>
-            <span class="tag tag-sec">Network Pentest</span>
-            <span class="tag tag-sec">Bug Bounty</span>
-            <span class="tag tag-sec">Exploit Development</span>
-            <span class="tag tag-sec">CVE Research</span>
+            <span class="tag tag-sec" data-original="Web App Pentest">Web App Pentest</span>
+            <span class="tag tag-sec" data-original="Network Pentest">Network Pentest</span>
+            <span class="tag tag-sec" data-original="Bug Bounty">Bug Bounty</span>
+            <span class="tag tag-sec" data-original="Exploit Dev">Exploit Dev</span>
+            <span class="tag tag-sec" data-original="CVE Research">CVE Research</span>
           </div>
         </div>
 
-        <div class="skill-category skill-security" data-cat="security">
-          <h4><i class="fas fa-search"></i> Recon & OSINT</h4>
+        <div class="skill-card sec" data-cat="security">
+          <div class="sc-icon sec-i"><i class="fas fa-search"></i></div>
+          <h4>Recon &amp; OSINT</h4>
           <div class="skill-tags">
-            <span class="tag tag-sec">Passive Recon</span>
-            <span class="tag tag-sec">Active Recon</span>
-            <span class="tag tag-sec">Subdomain Enum</span>
-            <span class="tag tag-sec">Google Dorking</span>
-            <span class="tag tag-sec">Social Engineering</span>
+            <span class="tag tag-sec" data-original="Passive Recon">Passive Recon</span>
+            <span class="tag tag-sec" data-original="Active Recon">Active Recon</span>
+            <span class="tag tag-sec" data-original="Subdomain Enum">Subdomain Enum</span>
+            <span class="tag tag-sec" data-original="Google Dorking">Google Dorking</span>
+            <span class="tag tag-sec" data-original="Social Eng">Social Eng</span>
           </div>
         </div>
 
-        <div class="skill-category skill-security" data-cat="security">
-          <h4><i class="fas fa-bug"></i> Offensive Tools</h4>
+        <div class="skill-card sec" data-cat="security">
+          <div class="sc-icon sec-i"><i class="fas fa-bug"></i></div>
+          <h4>Offensive Tools</h4>
           <div class="skill-tags">
-            <span class="tag tag-sec">Burp Suite</span>
-            <span class="tag tag-sec">Nmap</span>
-            <span class="tag tag-sec">Metasploit</span>
-            <span class="tag tag-sec">SQLMap</span>
-            <span class="tag tag-sec">Hydra</span>
-            <span class="tag tag-sec">Hashcat</span>
-            <span class="tag tag-sec">Wireshark</span>
+            <span class="tag tag-sec" data-original="Burp Suite">Burp Suite</span>
+            <span class="tag tag-sec" data-original="Nmap">Nmap</span>
+            <span class="tag tag-sec" data-original="Metasploit">Metasploit</span>
+            <span class="tag tag-sec" data-original="SQLMap">SQLMap</span>
+            <span class="tag tag-sec" data-original="Hydra">Hydra</span>
+            <span class="tag tag-sec" data-original="Hashcat">Hashcat</span>
+            <span class="tag tag-sec" data-original="Wireshark">Wireshark</span>
           </div>
         </div>
 
-        <div class="skill-category skill-security" data-cat="security">
-          <h4><i class="fas fa-user-secret"></i> Crypto & Forensics</h4>
+        <div class="skill-card sec" data-cat="security">
+          <div class="sc-icon sec-i"><i class="fas fa-user-secret"></i></div>
+          <h4>Crypto &amp; Forensics</h4>
           <div class="skill-tags">
-            <span class="tag tag-sec">Cryptography</span>
-            <span class="tag tag-sec">Digital Forensics</span>
-            <span class="tag tag-sec">Steganography</span>
-            <span class="tag tag-sec">Reverse Engineering</span>
-            <span class="tag tag-sec">CTF</span>
+            <span class="tag tag-sec" data-original="Cryptography">Cryptography</span>
+            <span class="tag tag-sec" data-original="Forensics">Forensics</span>
+            <span class="tag tag-sec" data-original="Steganography">Steganography</span>
+            <span class="tag tag-sec" data-original="Rev Engineering">Rev Engineering</span>
+            <span class="tag tag-sec" data-original="CTF">CTF</span>
           </div>
         </div>
-
       </div>
 
-      <!-- Progress bars -->
       <div class="progress-section">
         <div class="progress-cols">
           <div class="progress-col">
-            <p class="progress-group-label"><span class="prompt">&gt;</span> dev_proficiency</p>
+            <div class="pcol-header dev-h"><i class="fas fa-code"></i> DEV PROFICIENCY</div>
             <div class="progress-item">
-              <div class="progress-label"><span>HTML & CSS</span><span class="pct">90%</span></div>
-              <div class="progress-bar"><div class="progress-fill" data-width="90"></div></div>
+              <div class="progress-label"><span>HTML &amp; CSS</span><span class="pval">90%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="90"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>JavaScript</span><span class="pct">80%</span></div>
-              <div class="progress-bar"><div class="progress-fill" data-width="80"></div></div>
+              <div class="progress-label"><span>JavaScript</span><span class="pval">80%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="80"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>Node.js / Backend</span><span class="pct">75%</span></div>
-              <div class="progress-bar"><div class="progress-fill" data-width="75"></div></div>
+              <div class="progress-label"><span>Node.js / Backend</span><span class="pval">75%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="75"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>PHP</span><span class="pct">70%</span></div>
-              <div class="progress-bar"><div class="progress-fill" data-width="70"></div></div>
+              <div class="progress-label"><span>PHP</span><span class="pval">70%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="70"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>Python</span><span class="pct">65%</span></div>
-              <div class="progress-bar"><div class="progress-fill" data-width="65"></div></div>
+              <div class="progress-label"><span>Python</span><span class="pval">65%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="65"></div></div>
             </div>
           </div>
           <div class="progress-col">
-            <p class="progress-group-label sec-label"><span class="prompt-sec">&gt;</span> sec_proficiency</p>
+            <div class="pcol-header sec-h"><i class="fas fa-shield-alt"></i> SEC PROFICIENCY</div>
             <div class="progress-item">
-              <div class="progress-label"><span>Penetration Testing</span><span class="pct">90%</span></div>
-              <div class="progress-bar"><div class="progress-fill progress-fill-sec" data-width="90"></div></div>
+              <div class="progress-label"><span>Penetration Testing</span><span class="pval sec-v">90%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-sec" data-width="90"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>Web Security</span><span class="pct">88%</span></div>
-              <div class="progress-bar"><div class="progress-fill progress-fill-sec" data-width="88"></div></div>
+              <div class="progress-label"><span>Web Security</span><span class="pval sec-v">88%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-sec" data-width="88"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>Recon & OSINT</span><span class="pct">85%</span></div>
-              <div class="progress-bar"><div class="progress-fill progress-fill-sec" data-width="85"></div></div>
+              <div class="progress-label"><span>Recon &amp; OSINT</span><span class="pval sec-v">85%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-sec" data-width="85"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>Network Security</span><span class="pct">80%</span></div>
-              <div class="progress-bar"><div class="progress-fill progress-fill-sec" data-width="80"></div></div>
+              <div class="progress-label"><span>Network Security</span><span class="pval sec-v">80%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-sec" data-width="80"></div></div>
             </div>
             <div class="progress-item">
-              <div class="progress-label"><span>Crypto & Forensics</span><span class="pct">75%</span></div>
-              <div class="progress-bar"><div class="progress-fill progress-fill-sec" data-width="75"></div></div>
+              <div class="progress-label"><span>Crypto &amp; Forensics</span><span class="pval sec-v">75%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-sec" data-width="75"></div></div>
             </div>
           </div>
         </div>
@@ -263,64 +338,65 @@
   <!-- Projects -->
   <section id="projects">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">&gt;</span> ls ./projects<span class="title-accent">()</span></h2>
-      <p class="section-sub"><span class="comment">// </span>Loading project registry...</p>
+      <div class="section-header">
+        <span class="section-label">03 / PROJECTS</span>
+        <h2 class="section-title">./projects<span class="title-cursor">_</span></h2>
+        <div class="section-line"></div>
+      </div>
       <div class="projects-grid">
 
         <div class="project-card">
-          <div class="project-card-header">
-            <div class="project-icon"><i class="fas fa-music"></i></div>
-            <div class="project-status"><span class="dot-live"></span> LIVE</div>
+          <div class="pc-glow"></div>
+          <div class="pc-top">
+            <div class="pc-icon"><i class="fas fa-music"></i></div>
+            <div class="pc-live"><span class="live-dot"></span>LIVE</div>
           </div>
           <h4>Music Player</h4>
           <p>Player musik sederhana dengan sorting otomatis A→Z, dibangun untuk pengalaman santai mendengarkan musik.</p>
-          <div class="project-tech">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span>
-          </div>
-          <div class="project-links">
+          <div class="pc-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <div class="pc-links">
             <a href="https://erlandi.eu.org" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
             <a href="https://github.com/erlandi-main-api" target="_blank"><i class="fab fa-github"></i> Code</a>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-card-header">
-            <div class="project-icon"><i class="fas fa-robot"></i></div>
-            <div class="project-status"><span class="dot-live"></span> LIVE</div>
+          <div class="pc-glow"></div>
+          <div class="pc-top">
+            <div class="pc-icon"><i class="fas fa-robot"></i></div>
+            <div class="pc-live"><span class="live-dot"></span>LIVE</div>
           </div>
           <h4>API Projects</h4>
           <p>Berbagai project API dan backend yang dihosting dan dapat digunakan untuk kebutuhan development.</p>
-          <div class="project-tech">
-            <span>Node.js</span><span>API</span><span>GitHub</span>
-          </div>
-          <div class="project-links">
+          <div class="pc-tech"><span>Node.js</span><span>API</span><span>GitHub</span></div>
+          <div class="pc-links">
             <a href="https://github.com/erlandi-main-api" target="_blank"><i class="fab fa-github"></i> GitHub</a>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-card-header">
-            <div class="project-icon"><i class="fas fa-globe"></i></div>
-            <div class="project-status"><span class="dot-live"></span> LIVE</div>
+          <div class="pc-glow"></div>
+          <div class="pc-top">
+            <div class="pc-icon"><i class="fas fa-globe"></i></div>
+            <div class="pc-live"><span class="live-dot"></span>LIVE</div>
           </div>
           <h4>Personal Website</h4>
           <p>Website personal yang menampilkan profil, social media, dan berbagai fitur interaktif lainnya.</p>
-          <div class="project-tech">
-            <span>HTML</span><span>CSS</span><span>PHP</span>
-          </div>
-          <div class="project-links">
+          <div class="pc-tech"><span>HTML</span><span>CSS</span><span>PHP</span></div>
+          <div class="pc-links">
             <a href="https://erlandi.eu.org" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
           </div>
         </div>
 
         <div class="project-card project-add">
-          <div class="project-card-header">
-            <div class="project-icon"><i class="fas fa-code-branch"></i></div>
-            <div class="project-status"><span class="dot-dev"></span> DEV</div>
+          <div class="pc-glow"></div>
+          <div class="pc-top">
+            <div class="pc-icon"><i class="fas fa-code-branch"></i></div>
+            <div class="pc-dev"><span class="dev-dot"></span>DEV</div>
           </div>
           <h4>More Coming Soon</h4>
           <p>Masih banyak project menarik yang sedang dalam pengembangan. Stay tuned!</p>
-          <div class="project-links">
+          <div class="pc-links">
             <a href="https://github.com/erlandi-main-api" target="_blank"><i class="fab fa-github"></i> GitHub</a>
           </div>
         </div>
@@ -332,38 +408,42 @@
   <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">&gt;</span> connect --all<span class="title-accent">()</span></h2>
-      <p class="section-sub"><span class="comment">// </span>Establishing secure connections...</p>
+      <div class="section-header">
+        <span class="section-label">04 / CONTACT</span>
+        <h2 class="section-title">connect<span class="title-cursor">_</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="contact-sub">Establishing secure connections...</p>
       <div class="social-grid">
         <a href="https://github.com/erlandi-main-api" target="_blank" class="social-card github">
           <i class="fab fa-github"></i>
-          <span class="social-name">GitHub</span>
-          <span class="social-handle">@erlandi-main-api</span>
+          <span class="sn">GitHub</span>
+          <span class="sh">@erlandi-main-api</span>
         </a>
         <a href="https://t.me/erl_andi" target="_blank" class="social-card telegram">
           <i class="fab fa-telegram"></i>
-          <span class="social-name">Telegram</span>
-          <span class="social-handle">@erl_andi</span>
+          <span class="sn">Telegram</span>
+          <span class="sh">@erl_andi</span>
         </a>
         <a href="https://instagram.com/m_erlandi" target="_blank" class="social-card instagram">
           <i class="fab fa-instagram"></i>
-          <span class="social-name">Instagram</span>
-          <span class="social-handle">@m_erlandi</span>
+          <span class="sn">Instagram</span>
+          <span class="sh">@m_erlandi</span>
         </a>
         <a href="https://x.com/iam_erlandi" target="_blank" class="social-card twitter">
           <i class="fab fa-x-twitter"></i>
-          <span class="social-name">X / Twitter</span>
-          <span class="social-handle">@iam_erlandi</span>
+          <span class="sn">X / Twitter</span>
+          <span class="sh">@iam_erlandi</span>
         </a>
         <a href="https://facebook.com/mr.erlandi" target="_blank" class="social-card facebook">
           <i class="fab fa-facebook"></i>
-          <span class="social-name">Facebook</span>
-          <span class="social-handle">mr.erlandi</span>
+          <span class="sn">Facebook</span>
+          <span class="sh">mr.erlandi</span>
         </a>
         <a href="https://erlandi.eu.org" target="_blank" class="social-card website">
           <i class="fas fa-globe"></i>
-          <span class="social-name">Website</span>
-          <span class="social-handle">erlandi.eu.org</span>
+          <span class="sn">Website</span>
+          <span class="sh">erlandi.eu.org</span>
         </a>
       </div>
     </div>
@@ -371,7 +451,12 @@
 
   <!-- Footer -->
   <footer>
-    <p><span class="prompt">&gt;</span> echo <span class="str">"© 2026 M Erlandi"</span> <span class="comment">// built with HTML, CSS &amp; JS</span></p>
+    <div class="footer-inner">
+      <span class="f-prompt">&gt;</span>
+      <span class="f-cmd">echo</span>
+      <span class="f-str">"© 2026 M Erlandi"</span>
+      <span class="f-comment">// crafted with HTML, CSS &amp; JS</span>
+    </div>
   </footer>
 
   <script src="script.js"></script>
