@@ -1,5 +1,5 @@
 // Typewriter effect
-const texts = ['Developer', 'Creator', 'Web Builder', 'Problem Solver'];
+const texts = ['Developer', 'Security Researcher', 'Bug Bounty Hunter', 'Pentester', 'Creator'];
 let ti = 0, ci = 0, del = false;
 const tw = document.getElementById('typewriter');
 
@@ -55,6 +55,19 @@ document.querySelectorAll('.project-card, .skill-category, .social-card').forEac
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s';
   cardObserver.observe(el);
+});
+
+// Skill tab filter
+document.querySelectorAll('.skill-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.skill-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    document.querySelectorAll('.skill-category').forEach(cat => {
+      const show = filter === 'all' || cat.dataset.cat === filter;
+      cat.classList.toggle('hidden', !show);
+    });
+  });
 });
 
 // Navbar scroll effect
