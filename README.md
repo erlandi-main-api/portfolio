@@ -4,15 +4,17 @@
 
 # M Erlandi — Portfolio
 
-**Developer · Security Researcher · Bug Bounty Hunter**
+**Developer · Pentester · AI Agent Builder**
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-erlandi.eu.org-6c63ff?style=for-the-badge&logo=globe&logoColor=white)](https://erlandi.eu.org)
+[![Live Site](https://img.shields.io/badge/Live%20Site-erlandi.eu.org-00ff41?style=for-the-badge&logo=googlechrome&logoColor=black)](https://erlandi-main-api.github.io/portfolio/)
 [![GitHub](https://img.shields.io/badge/GitHub-erlandi--main--api-181717?style=for-the-badge&logo=github)](https://github.com/erlandi-main-api)
 [![Telegram](https://img.shields.io/badge/Telegram-@erl__andi-0088cc?style=for-the-badge&logo=telegram)](https://t.me/erl_andi)
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-121011?style=flat-square&logo=gnu-bash&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=cloudflare&logoColor=white)
 
 </div>
 
@@ -20,9 +22,7 @@
 
 ## Overview
 
-Personal portfolio website showcasing my skills as a **Developer** and **Security Researcher**. Built with pure HTML, CSS, and JavaScript — no frameworks, no dependencies, fast load.
-
-The site covers two domains: **Web Development** and **Cybersecurity / Penetration Testing**, with an interactive skill filter, animated progress bars, and a responsive dark UI.
+Portfolio website M Erlandi — Developer, Pentester, dan AI Agent Builder yang beroperasi secara internasional. Dibangun dengan pure HTML/CSS/JS, tema **Anonymous/hacker aesthetic** dengan matrix rain, glitch effects, dan boot loader sequence.
 
 ---
 
@@ -30,13 +30,18 @@ The site covers two domains: **Web Development** and **Cybersecurity / Penetrati
 
 | Feature | Description |
 |---|---|
-| **Skill Tab Filter** | Toggle between Development and Security skill categories |
-| **Dual Progress Bars** | Side-by-side proficiency bars for Dev and Security |
-| **Typewriter Effect** | Rotating roles: Developer, Security Researcher, Bug Bounty Hunter, Pentester |
-| **Animated Cards** | Scroll-triggered fade-in for all cards and sections |
-| **Responsive Design** | Fully mobile-friendly with hamburger menu |
-| **Dark Theme** | Deep dark UI with purple and red accent colors |
-| **Status Indicator** | Live online status dot on avatar |
+| **Boot Loader** | Cinematic boot sequence saat halaman dibuka |
+| **Matrix Rain** | Animated matrix background (Katakana + binary) |
+| **Glitch Effect** | Glitch animation pada nama di hero section |
+| **Particle Network** | Floating particle network di hero |
+| **Cursor Glow** | Glow effect mengikuti kursor |
+| **Skill Tab Filter** | Filter skill: ALL / DEV / SEC / AI / ANDROID |
+| **Text Scramble** | Karakter random saat hover skill tags |
+| **3-Col Progress** | Proficiency bars: Dev + Security + AI |
+| **Scroll Reveal** | Staggered card reveal on scroll |
+| **Stats Counter** | Animated counter untuk stats |
+| **Scroll Progress** | Progress bar di bagian atas halaman |
+| **Responsive** | Mobile-friendly dengan hamburger menu |
 
 ---
 
@@ -49,10 +54,21 @@ The site covers two domains: **Web Development** and **Cybersecurity / Penetrati
 - **DevOps & Tools** — Git, GitHub, Docker, Linux, Termux
 
 ### Security
-- **Penetration Testing** — Web App Pentest, Network Pentest, Bug Bounty, Exploit Development, CVE Research
-- **Recon & OSINT** — Passive/Active Recon, Subdomain Enumeration, Google Dorking, Social Engineering
+- **Penetration Testing** — Web App Pentest, Network Pentest, Bug Bounty, Exploit Dev, CVE Research
+- **Recon & OSINT** — FOFA, LeakIX, SSH Hunter, DB Hunter, Nightcrawler, Proxy Hunter, Google Dorking
 - **Offensive Tools** — Burp Suite, Nmap, Metasploit, SQLMap, Hydra, Hashcat, Wireshark
 - **Crypto & Forensics** — Cryptography, Digital Forensics, Steganography, Reverse Engineering, CTF
+
+### AI & Agent
+- **AI Agent Framework** — OpenClaw, Agent Loop, Memory System, Tool Catalog, Multi-provider AI, MCP Server
+- **Prompt & LLM Engineering** — System Prompt Design, Context Injection, Prompt Caching, Multi-provider Routing, OpenRouter
+- **Browser & Web Automation** — Playwright, Advanced Scraper, Web Search, API Tester, Captcha Bypass
+- **Telegram Bot Dev** — Telegram Bot API, NanoBot, Broadcast System, Admin API, Group Management
+- **Cloud & Deployment** — Cloudflare Workers, API Proxy, Vercel, Docker, VPS Management, R2 Storage
+
+### Android
+- **Android System Control** — Shizuku, ADB, App Management, Intent/Broadcast, System Settings, Package Manager
+- **Mobile & Termux** — Termux, Samsung Galaxy, Device Automation, Root/No-Root, APK Analysis
 
 ---
 
@@ -60,30 +76,19 @@ The site covers two domains: **Web Development** and **Cybersecurity / Penetrati
 
 ```
 portfolio/
-├── index.html      # Main page — all sections
-├── style.css       # Styling, theming, responsive
-└── script.js       # Typewriter, tab filter, scroll animations
+├── index.html      # Main page — semua sections
+├── style.css       # Dark theme, animations, responsive
+└── script.js       # Boot loader, matrix, particles, scramble, counters
 ```
 
 ---
 
 ## Run Locally
 
-No build step required — just open the file:
-
 ```bash
 git clone https://github.com/erlandi-main-api/portfolio.git
 cd portfolio
-# Open index.html in browser
-open index.html
-```
-
-Or serve with any static server:
-
-```bash
-npx serve .
-# or
-python3 -m http.server 8080
+open index.html        # atau buka di browser langsung
 ```
 
 ---
@@ -94,8 +99,9 @@ python3 -m http.server 8080
 UI        → HTML5 + CSS3 (custom properties, grid, flexbox)
 Logic     → Vanilla JavaScript (ES6+)
 Icons     → Font Awesome 6.5
-Fonts     → Google Fonts (Inter)
-Hosting   → GitHub Pages / Custom Domain
+Fonts     → JetBrains Mono + Inter (Google Fonts)
+Hosting   → GitHub Pages
+Theme     → Anonymous/Hacker — matrix green, cyan, purple
 ```
 
 ---
