@@ -483,8 +483,26 @@ section { padding: 6rem 0; position: relative; z-index: 2; }
 .tag-sec:hover { background: var(--c); color: #000; box-shadow: 0 0 12px var(--glow-c); }
 .skill-card.hidden { display: none; }
 
+/* AI cards — purple accent */
+.skill-card.ai-card { border-color: rgba(168,85,247,.2); }
+.skill-card.ai-card::before { background: linear-gradient(90deg, transparent, #a855f7, transparent); }
+.skill-card.ai-card:hover { border-color: rgba(168,85,247,.4); box-shadow: 0 20px 40px rgba(0,0,0,.6), 0 0 30px rgba(168,85,247,.1); }
+.skill-card.ai-card h4 { color: #a855f7; }
+.sc-icon.ai-i { background: rgba(168,85,247,.08); color: #a855f7; border-color: rgba(168,85,247,.2); }
+.tag-ai { background: rgba(168,85,247,.07); color: #c084fc; border-color: rgba(168,85,247,.2); }
+.tag-ai:hover { background: #a855f7; color: #fff; box-shadow: 0 0 12px rgba(168,85,247,.5); }
+
+/* Android cards — teal accent */
+.skill-card.android-card { border-color: rgba(0,212,170,.2); }
+.skill-card.android-card::before { background: linear-gradient(90deg, transparent, #00d4aa, transparent); }
+.skill-card.android-card:hover { border-color: rgba(0,212,170,.4); box-shadow: 0 20px 40px rgba(0,0,0,.6), 0 0 30px rgba(0,212,170,.1); }
+.skill-card.android-card h4 { color: #00d4aa; }
+.sc-icon.android-i { background: rgba(0,212,170,.08); color: #00d4aa; border-color: rgba(0,212,170,.2); }
+.tag-android { background: rgba(0,212,170,.07); color: #00d4aa; border-color: rgba(0,212,170,.2); }
+.tag-android:hover { background: #00d4aa; color: #000; box-shadow: 0 0 12px rgba(0,212,170,.5); }
+
 /* ===== PROGRESS ===== */
-.progress-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.progress-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; }
 .pcol-header {
   font-family: var(--mono); font-size: .7rem; font-weight: 700;
   letter-spacing: 2px; margin-bottom: 1.5rem;
@@ -492,6 +510,10 @@ section { padding: 6rem 0; position: relative; z-index: 2; }
 }
 .pcol-header.dev-h { color: var(--g); text-shadow: 0 0 10px var(--glow); }
 .pcol-header.sec-h { color: var(--c); text-shadow: 0 0 10px var(--glow-c); }
+.pcol-header.ai-h { color: #a855f7; text-shadow: 0 0 10px rgba(168,85,247,.5); }
+.pval.ai-v { color: #a855f7; }
+.progress-fill.pf-ai { background: linear-gradient(90deg, #7b2fff, #c084fc); box-shadow: 0 0 10px rgba(168,85,247,.5); }
+.progress-fill.pf-ai::after { box-shadow: 0 0 8px rgba(168,85,247,.6); }
 
 .progress-item { margin-bottom: 1.3rem; }
 .progress-label {
@@ -648,7 +670,7 @@ footer {
   .about-content { display: flex; flex-direction: column; align-items: center; }
   .about-content p { text-align: left; }
   .info-grid { text-align: left; }
-  .progress-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .progress-cols { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-visual { display: flex; justify-content: center; }
   .terminal-card { max-width: 300px; }
   .exp-badge { right: 0; }
